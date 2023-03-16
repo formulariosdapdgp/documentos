@@ -1,0 +1,1062 @@
+
+
+</html>
+
+<!--Corpo da NT-->
+
+<head>
+       <title data-cke-title="Editor de Rich Text, txaEditor_431">Nota Técnica</title>
+       <style data-cke-temp="1">
+              html {
+                     cursor: text;
+                     *cursor: auto
+              }
+
+              img,
+              input,
+              textarea {
+                     cursor: default
+              }
+       </style>
+       <style>
+              p.Citacao {
+                     font-size: 10pt;
+                     font-family: Arial;
+                     word-wrap: normal;
+                     margin: 4pt 0 4pt 160px;
+                     text-align: justify;
+              }
+
+              p.Fonte_10 {
+                     font-size: 10pt;
+              }
+
+              p.Fonte_12_UnB {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-indent: 25mm;
+                     text-align: justify;
+                     word-wrap: normal;
+                     margin: 6pt;
+              }
+
+              /*p.Identificador_Servidor {}*/
+
+              p.Item_Alinea_Letra {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-indent: 0mm;
+                     text-align: justify;
+                     word-wrap: normal;
+                     margin: 6pt 6pt 6pt 120px;
+                     counter-increment: letra_minuscula;
+              }
+
+              p.Item_Alinea_Letra:before {
+                     content: counter(letra_minuscula, lower-latin) ") ";
+                     display: inline-block;
+                     width: 5mm;
+                     font-weight: normal;
+              }
+
+              p.Item_Inciso_Romano {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-align: justify;
+                     word-wrap: normal;
+                     text-indent: 0mm;
+                     margin: 6pt 6pt 6pt 120px;
+                     counter-increment: romano_maiusculo;
+                     counter-reset: letra_minuscula;
+              }
+
+              p.Item_Inciso_Romano:before {
+                     content: counter(romano_maiusculo, upper-roman) " - ";
+                     display: inline-block;
+                     width: 15mm;
+                     font-weight: normal;
+              }
+
+              p.Item_Nivel1 {
+                     text-transform: uppercase;
+                     font-weight: bold;
+                     background-color: #e6e6e6;
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-align: justify;
+                     word-wrap: normal;
+                     text-indent: 0;
+                     margin: 6pt;
+                     counter-increment: item-n1;
+                     counter-reset: item-n2 item-n3 item-n4 romano_maiusculo letra_minuscula;
+              }
+
+              p.Item_Nivel1:before {
+                     content: counter(item-n1) ".";
+                     display: inline-block;
+                     width: 25mm;
+                     font-weight: normal;
+              }
+
+              p.Item_Nivel2 {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-indent: 0mm;
+                     text-align: justify;
+                     word-wrap: normal;
+                     margin: 6pt;
+                     counter-increment: item-n2;
+                     counter-reset: item-n3 item-n4 romano_maiusculo letra_minuscula;
+              }
+
+              p.Item_Nivel2:before {
+                     content: counter(item-n1) "." counter(item-n2) ".";
+                     display: inline-block;
+                     width: 25mm;
+                     font-weight: normal;
+              }
+
+              p.Item_Nivel3 {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-indent: 0mm;
+                     text-align: justify;
+                     word-wrap: normal;
+                     margin: 6pt;
+                     counter-increment: item-n3;
+                     counter-reset: item-n4 romano_maiusculo letra_minuscula;
+              }
+
+              p.Item_Nivel3:before {
+                     content: counter(item-n1) "." counter(item-n2) "." counter(item-n3) ".";
+                     display: inline-block;
+                     width: 25mm;
+                     font-weight: normal;
+              }
+
+              p.Item_Nivel4 {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-indent: 0mm;
+                     text-align: justify;
+                     word-wrap: normal;
+                     margin: 6pt;
+                     counter-increment: item-n4;
+                     counter-reset: romano_maiusculo letra_minuscula;
+              }
+
+              p.Item_Nivel4:before {
+                     content: counter(item-n1) "." counter(item-n2) "." counter(item-n3) "." counter(item-n4) ".";
+                     display: inline-block;
+                     width: 25mm;
+                     font-weight: normal;
+              }
+
+              p.Paragrafo_Numerado_Nivel1 {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-align: justify;
+                     word-wrap: normal;
+                     text-indent: 0mm;
+                     margin: 6pt;
+                     counter-increment: paragrafo-n1;
+                     counter-reset: paragrafo-n2 paragrafo-n3 paragrafo-n4 romano_maiusculo letra_minuscula;
+              }
+
+              p.Paragrafo_Numerado_Nivel1:before {
+                     content: counter(paragrafo-n1) ".";
+                     display: inline-block;
+                     width: 25mm;
+                     font-weight: normal;
+              }
+
+              p.Paragrafo_Numerado_Nivel2 {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-indent: 0mm;
+                     text-align: justify;
+                     word-wrap: normal;
+                     margin: 6pt;
+                     counter-increment: paragrafo-n2;
+                     counter-reset: paragrafo-n3 paragrafo-n4 romano_maiusculo letra_minuscula;
+              }
+
+              p.Paragrafo_Numerado_Nivel2:before {
+                     content: counter(paragrafo-n1) "." counter(paragrafo-n2) ".";
+                     display: inline-block;
+                     width: 25mm;
+                     font-weight: normal;
+              }
+
+              p.Paragrafo_Numerado_Nivel3 {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-indent: 0mm;
+                     text-align: justify;
+                     word-wrap: normal;
+                     margin: 6pt;
+                     counter-increment: paragrafo-n3;
+                     counter-reset: paragrafo-n4 romano_maiusculo letra_minuscula;
+              }
+
+              p.Paragrafo_Numerado_Nivel3:before {
+                     content: counter(paragrafo-n1) "." counter(paragrafo-n2) "." counter(paragrafo-n3) ".";
+                     display: inline-block;
+                     width: 25mm;
+                     font-weight: normal;
+              }
+
+              p.Paragrafo_Numerado_Nivel4 {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-indent: 0mm;
+                     text-align: justify;
+                     word-wrap: normal;
+                     margin: 6pt;
+                     counter-increment: paragrafo-n4;
+                     counter-reset: romano_maiusculo letra_minuscula;
+              }
+
+              p.Paragrafo_Numerado_Nivel4:before {
+                     content: counter(paragrafo-n1) "." counter(paragrafo-n2) "." counter(paragrafo-n3) "." counter(paragrafo-n4) ".";
+                     display: inline-block;
+                     width: 25mm;
+                     font-weight: normal;
+              }
+
+              p.Tabela_Texto_16_Centralizado_UnB {
+                     font-size: 16pt;
+                     font-family: Calibri;
+                     text-align: center;
+                     word-wrap: normal;
+                     margin: 0 3pt 0 3pt;
+              }
+
+              p.Tabela_texto_16_UnB_Alinhando_Direita {
+                     font-size: 16pt;
+                     font-family: Calibri;
+                     text-align: rigth;
+                     word-wrap: normal;
+                     margin: 0 3pt 0 3pt;
+              }
+
+              p.Tabela_texto_16_UnB_Alinhando_Esquerda {
+                     font-size: 16pt;
+                     font-family: Calibri;
+                     text-align: left;
+                     word-wrap: normal;
+                     margin: 0 3pt 0 3pt;
+              }
+
+              p.Tabela_texto_6 {
+                     font-size: 6pt;
+                     font-family: Calibri;
+                     text-align: left;
+                     word-wrap: normal;
+                     margin: 0 3pt 0 3pt;
+              }
+
+              p.Tabela_Texto_8 {
+                     font-size: 8pt;
+                     font-family: Calibri;
+                     text-align: left;
+                     word-wrap: normal;
+                     margin: 0 3pt 0 3pt;
+              }
+
+              p.Tabela_Texto_8_Alinhado_Direita_UnB {
+                     font-size: 8pt;
+                     font-family: Calibri;
+                     text-align: rigth;
+                     word-wrap: normal;
+                     margin: 0 3pt 0 3pt;
+              }
+
+              p.Tabela_Texto_8_Centralizado_UnB {
+                     font-size: 8pt;
+                     font-family: Calibri;
+                     text-align: center;
+                     word-wrap: normal;
+                     margin: 0 3pt 0 3pt;
+              }
+
+              p.Tabela_Texto_Alinhado_Direita {
+                     font-size: 11pt;
+                     font-family: Calibri;
+                     text-align: right;
+                     word-wrap: normal;
+                     margin: 0 3pt 0 3pt;
+              }
+
+              p.Tabela_Texto_Alinhado_Esquerda {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-align: left;
+                     word-wrap: normal;
+                     margin: 0 3pt 0 3pt;
+              }
+
+              p.Tabela_Texto_Centralizado {
+                     font-size: 11pt;
+                     font-family: Calibri;
+                     text-align: center;
+                     word-wrap: normal;
+                     margin: 0 3pt 0;
+              }
+
+              p.Tachado {
+                     font-size: 11pt;
+                     font-family: Calibri;
+                     text-indent: 1.18in;
+                     text-align: justify;
+                     word-wrap: normal;
+                     text-decoration: line-through;
+              }
+
+              p.Teste_UnB {
+                     font-size: 12pt;
+              }
+
+              p.Texto_Alinhado_16_Esquerda_Espacamento_Simples {
+                     font-size: 16pt;
+                     font-family: Arial;
+                     text-align: left;
+                     word-wrap: normal;
+                     margin: 0;
+              }
+
+              p.Texto_Alinhado_Direita {
+                     font-size: 12pt;
+                     font-family: Arial;
+                     text-align: right;
+                     word-wrap: normal;
+                     margin: 6pt;
+              }
+
+              p.Texto_Alinhado_Esquerda {
+                     font-size: 12pt;
+                     font-family: Arial;
+                     text-align: left;
+                     word-wrap: normal;
+                     margin: 6pt;
+              }
+
+              p.Texto_Alinhado_Esquerda_Espacamento_Simples {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-align: left;
+                     word-wrap: normal;
+                     margin: 0;
+              }
+
+              p.Texto_Alinhado_Esquerda_Espacamento_Simples_Maiusc {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-align: left;
+                     text-transform: uppercase;
+                     word-wrap: normal;
+                     margin: 0;
+              }
+
+              p.Texto_Centralizado {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-align: center;
+                     word-wrap: normal;
+                     margin: 6pt;
+              }
+
+              p.Texto_Centralizado_Maiusculas {
+                     font-size: 13pt;
+                     font-family: Calibri;
+                     text-align: center;
+                     text-transform: uppercase;
+                     word-wrap: normal;
+              }
+
+              p.Texto_Centralizado_Maiusculas_Negrito {
+                     font-weight: bold;
+                     font-size: 13pt;
+                     font-family: Calibri;
+                     text-align: center;
+                     text-transform: uppercase;
+                     word-wrap: normal;
+              }
+
+              p.Texto_Espaco_Duplo_Recuo_Primeira_Linha {
+                     letter-spacing: 0.2em;
+                     font-weight: bold;
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-indent: 25mm;
+                     text-align: justify;
+                     word-wrap: normal;
+                     margin: 6pt;
+              }
+
+              p.Texto_Fundo_Cinza_Maiusculas_Negrito {
+                     text-transform: uppercase;
+                     font-weight: bold;
+                     background-color: #e6e6e6;
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-align: justify;
+                     word-wrap: normal;
+                     text-indent: 0;
+                     margin: 6pt;
+              }
+
+              p.Texto_Fundo_Cinza_Negrito {
+                     font-weight: bold;
+                     background-color: #e6e6e6;
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-align: justify;
+                     word-wrap: normal;
+                     text-indent: 0;
+                     margin: 6pt;
+              }
+
+              p.Texto_Justificado_Fonte-12_Unb {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-align: justify;
+                     word-wrap: normal;
+                     text-indent: 0;
+                     margin: 6pt;
+              }
+
+              p.Texto_Justificado_Fonte-16 {
+                     font-size: 16pt;
+                     font-family: Calibri;
+                     text-align: justify;
+                     word-wrap: normal;
+                     text-indent: 0;
+                     margin: 6pt;
+              }
+
+              p.Texto_Justificado_Maiusculas {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-align: justify;
+                     word-wrap: normal;
+                     text-indent: 0;
+                     margin: 6pt;
+                     text-transform: uppercase;
+              }
+
+              p.Texto_Justificado_Recuo_Primeira_Linha_Fonte-12 {
+                     font-size: 12pt;
+                     font-family: Calibri;
+                     text-indent: 25mm;
+                     text-align: justify;
+                     word-wrap: normal;
+                     margin: 6pt;
+              }
+
+              p.Texto_Justificado_Recuo_Primeira_Linha_Fonte-16 {
+                     font-size: 16pt;
+                     font-family: Calibri;
+                     text-indent: 25mm;
+                     text-align: justify;
+                     word-wrap: normal;
+                     margin: 6pt;
+              }
+
+              p.Texto_Mono_Espacado {
+                     font-size: 8pt;
+                     font-family: Calibri;
+                     text-align: left;
+                     white-space: pre;
+                     word-wrap: normal;
+                     margin: 2pt;
+              }
+
+              p.UnB_Fonte_10_Justificado_Calibri {
+                     font-size: 10pt;
+                     font-family: Calibri;
+                     text-align: justify;
+                     word-wrap: normal;
+                     text-indent: 0;
+                     margin: 6pt;
+              }
+       </style>
+       <style data-cke-temp="1">
+              .cke_editable {
+                     cursor: text
+              }
+
+              .cke_editable img,
+              .cke_editable input,
+              .cke_editable textarea {
+                     cursor: default
+              }
+
+              .cke_editable form {
+                     border: 1px dotted #FF0000;
+                     padding: 2px;
+              }
+
+              img.cke_hidden {
+                     background-image: url(https://sei.unb.br/sei/editor/ck/plugins/forms/images/hiddenfield.gif?t=G2FX);
+                     background-position: center center;
+                     background-repeat: no-repeat;
+                     border: 1px solid #a9a9a9;
+                     width: 16px !important;
+                     height: 16px !important;
+              }
+
+              img.cke_iframe {
+                     background-image: url(https://sei.unb.br/sei/editor/ck/plugins/iframe/images/placeholder.png?t=G2FX);
+                     background-position: center center;
+                     background-repeat: no-repeat;
+                     border: 1px solid #a9a9a9;
+                     width: 80px;
+                     height: 80px;
+              }
+
+              div.cke_pagebreak {
+                     background: url(https://sei.unb.br/sei/editor/ck/plugins/pagebreak/images/pagebreak.gif?t=G2FX) no-repeat center center !important;
+                     clear: both !important;
+                     width: 100% !important;
+                     border-top: #999 1px dotted !important;
+                     border-bottom: #999 1px dotted !important;
+                     padding: 0 !important;
+                     height: 7px !important;
+                     cursor: default !important;
+              }
+
+              .cke_show_blocks h6:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks h5:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks h4:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks h3:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks h2:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks h1:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks blockquote:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks address:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks pre:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks div:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks p:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-repeat: no-repeat;
+                     border: 1px dotted gray;
+                     padding-top: 8px
+              }
+
+              .cke_show_blocks h6:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-image: url(https://sei.unb.br/sei/editor/ck/plugins/showblocks/images/block_h6.png?t=G2FX)
+              }
+
+              .cke_show_blocks h5:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-image: url(https://sei.unb.br/sei/editor/ck/plugins/showblocks/images/block_h5.png?t=G2FX)
+              }
+
+              .cke_show_blocks h4:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-image: url(https://sei.unb.br/sei/editor/ck/plugins/showblocks/images/block_h4.png?t=G2FX)
+              }
+
+              .cke_show_blocks h3:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-image: url(https://sei.unb.br/sei/editor/ck/plugins/showblocks/images/block_h3.png?t=G2FX)
+              }
+
+              .cke_show_blocks h2:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-image: url(https://sei.unb.br/sei/editor/ck/plugins/showblocks/images/block_h2.png?t=G2FX)
+              }
+
+              .cke_show_blocks h1:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-image: url(https://sei.unb.br/sei/editor/ck/plugins/showblocks/images/block_h1.png?t=G2FX)
+              }
+
+              .cke_show_blocks blockquote:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-image: url(https://sei.unb.br/sei/editor/ck/plugins/showblocks/images/block_blockquote.png?t=G2FX)
+              }
+
+              .cke_show_blocks address:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-image: url(https://sei.unb.br/sei/editor/ck/plugins/showblocks/images/block_address.png?t=G2FX)
+              }
+
+              .cke_show_blocks pre:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-image: url(https://sei.unb.br/sei/editor/ck/plugins/showblocks/images/block_pre.png?t=G2FX)
+              }
+
+              .cke_show_blocks div:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-image: url(https://sei.unb.br/sei/editor/ck/plugins/showblocks/images/block_div.png?t=G2FX)
+              }
+
+              .cke_show_blocks p:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-image: url(https://sei.unb.br/sei/editor/ck/plugins/showblocks/images/block_p.png?t=G2FX)
+              }
+
+              .cke_show_blocks.cke_contents_ltr h6:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_ltr h5:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_ltr h4:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_ltr h3:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_ltr h2:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_ltr h1:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_ltr blockquote:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_ltr address:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_ltr pre:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_ltr div:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_ltr p:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-position: top left;
+                     padding-left: 8px
+              }
+
+              .cke_show_blocks.cke_contents_rtl h6:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_rtl h5:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_rtl h4:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_rtl h3:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_rtl h2:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_rtl h1:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_rtl blockquote:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_rtl address:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_rtl pre:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_rtl div:not([contenteditable=false]):not(.cke_show_blocks_off),
+              .cke_show_blocks.cke_contents_rtl p:not([contenteditable=false]):not(.cke_show_blocks_off) {
+                     background-position: top right;
+                     padding-right: 8px
+              }
+
+              .cke_show_borders table.cke_show_border,
+              .cke_show_borders table.cke_show_border>tr>td,
+              .cke_show_borders table.cke_show_border>tr>th,
+              .cke_show_borders table.cke_show_border>tbody>tr>td,
+              .cke_show_borders table.cke_show_border>tbody>tr>th,
+              .cke_show_borders table.cke_show_border>thead>tr>td,
+              .cke_show_borders table.cke_show_border>thead>tr>th,
+              .cke_show_borders table.cke_show_border>tfoot>tr>td,
+              .cke_show_borders table.cke_show_border>tfoot>tr>th {
+                     border: #d3d3d3 1px dotted
+              }
+
+              .ancoraSei {
+                     background-color: #d5d5d5;
+              }
+
+              .cke_widget_wrapper {
+                     position: relative;
+                     outline: none
+              }
+
+              .cke_widget_inline {
+                     display: inline-block
+              }
+
+              .cke_widget_wrapper:hover>.cke_widget_element {
+                     outline: 2px solid yellow;
+                     cursor: default
+              }
+
+              .cke_widget_wrapper:hover .cke_widget_editable {
+                     outline: 2px solid yellow
+              }
+
+              .cke_widget_wrapper.cke_widget_focused>.cke_widget_element,
+              .cke_widget_wrapper .cke_widget_editable.cke_widget_editable_focused {
+                     outline: 2px solid #ace
+              }
+
+              .cke_widget_editable {
+                     cursor: text
+              }
+
+              .cke_widget_drag_handler_container {
+                     position: absolute;
+                     width: 15px;
+                     height: 0;
+                     display: none;
+                     opacity: 0.75;
+                     transition: height 0s 0.2s;
+                     line-height: 0
+              }
+
+              .cke_widget_wrapper:hover>.cke_widget_drag_handler_container {
+                     height: 15px;
+                     transition: none
+              }
+
+              .cke_widget_drag_handler_container:hover {
+                     opacity: 1
+              }
+
+              img.cke_widget_drag_handler {
+                     cursor: move;
+                     width: 15px;
+                     height: 15px;
+                     display: inline-block
+              }
+
+              .cke_widget_mask {
+                     position: absolute;
+                     top: 0;
+                     left: 0;
+                     width: 100%;
+                     height: 100%;
+                     display: block
+              }
+
+              .cke_editable.cke_widget_dragging,
+              .cke_editable.cke_widget_dragging * {
+                     cursor: move !important
+              }
+       </style>
+       <link rel="stylesheet" type="text/css" datastyle="seipro-fonticon"
+              href="chrome-extension://pdbbapplhjopafpgidbgceccbbmehcjj/css/fontawesome.min.css">
+       <style type="text/css" data-style="seipro-fonticon" data-index="1">
+              @font-face {
+                     font-family: "Font Awesome 5 Free";
+                     font-style: normal;
+                     font-weight: 900;
+                     font-display: block;
+                     src: url(chrome-extension://pdbbapplhjopafpgidbgceccbbmehcjj/webfonts/fa-solid-900.eot) !important;
+                     src: url(chrome-extension://pdbbapplhjopafpgidbgceccbbmehcjj/webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"), url(chrome-extension://pdbbapplhjopafpgidbgceccbbmehcjj/webfonts/fa-solid-900.woff2) format("woff2"), url(chrome-extension://pdbbapplhjopafpgidbgceccbbmehcjj/webfonts/fa-solid-900.woff) format("woff"), url(chrome-extension://pdbbapplhjopafpgidbgceccbbmehcjj/webfonts/fa-solid-900.ttf) format("truetype"), url(chrome-extension://pdbbapplhjopafpgidbgceccbbmehcjj/webfonts/fa-solid-900.svg#fontawesome) format("svg") !important;
+              }
+
+              @font-face {
+                     font-family: "Font Awesome 5 Free";
+                     font-style: normal;
+                     font-weight: 400;
+                     font-display: block;
+                     src: url(chrome-extension://pdbbapplhjopafpgidbgceccbbmehcjj/webfonts/fa-regular-400.eot) !important;
+                     src: url(chrome-extension://pdbbapplhjopafpgidbgceccbbmehcjj/webfonts/fa-regular-400.eot?#iefix) format("embedded-opentype"), url(chrome-extension://pdbbapplhjopafpgidbgceccbbmehcjj/webfonts/fa-regular-400.woff2) format("woff2"), url(chrome-extension://pdbbapplhjopafpgidbgceccbbmehcjj/webfonts/fa-regular-400.woff) format("woff"), url(chrome-extension://pdbbapplhjopafpgidbgceccbbmehcjj/webfonts/fa-regular-400.ttf) format("truetype"), url(chrome-extension://pdbbapplhjopafpgidbgceccbbmehcjj/webfonts/fa-regular-400.svg#fontawesome) format("svg") !important;
+              }
+       </style>
+       <style type="text/css" data-style="seipro-resizeimg">
+              img::selection {
+                     color: transparent
+              }
+
+              img.ckimgrsz {
+                     outline: 1px dashed #000
+              }
+
+              #ckimgrsz {
+                     position: absolute;
+                     margin: -8px -8px;
+                     width: 0;
+                     height: 0;
+                     cursor: default;
+                     z-index: 10001
+              }
+
+              #ckimgrsz span {
+                     display: none;
+                     position: absolute;
+                     top: 0;
+                     left: 0;
+                     width: 0;
+                     height: 0;
+                     background-size: 100% 100%;
+                     opacity: .65;
+                     outline: 1px dashed #000
+              }
+
+              #ckimgrsz i {
+                     position: absolute;
+                     display: block;
+                     width: 5px;
+                     height: 5px;
+                     background: #fff;
+                     border: 1px solid #000
+              }
+
+              #ckimgrsz i.active,
+              #ckimgrsz i:hover {
+                     background: #000
+              }
+
+              #ckimgrsz i.br,
+              #ckimgrsz i.tl {
+                     cursor: nwse-resize
+              }
+
+              #ckimgrsz i.bm,
+              #ckimgrsz i.tm {
+                     cursor: ns-resize
+              }
+
+              #ckimgrsz i.bl,
+              #ckimgrsz i.tr {
+                     cursor: nesw-resize
+              }
+
+              #ckimgrsz i.lm,
+              #ckimgrsz i.rm {
+                     cursor: ew-resize
+              }
+
+              body.dragging-br,
+              body.dragging-br *,
+              body.dragging-tl,
+              body.dragging-tl * {
+                     cursor: nwse-resize !important
+              }
+
+              body.dragging-bm,
+              body.dragging-bm *,
+              body.dragging-tm,
+              body.dragging-tm * {
+                     cursor: ns-resize !important
+              }
+
+              body.dragging-bl,
+              body.dragging-bl *,
+              body.dragging-tr,
+              body.dragging-tr * {
+                     cursor: nesw-resize !important
+              }
+
+              body.dragging-lm,
+              body.dragging-lm *,
+              body.dragging-rm,
+              body.dragging-rm * {
+                     cursor: ew-resize !important
+              }
+       </style>
+       <style type="text/css" data-style="seipro">
+              p .ancoraSei {
+                     background: #e4e4e4;
+              }
+
+              html.dark-mode body[contenteditable="false"],
+              html.dark-mode p.Texto_Fundo_Cinza_Maiusculas_Negrito,
+              html.dark-mode p.Texto_Fundo_Cinza_Negrito,
+              html.dark-mode p .ancoraSei,
+              html.dark-mode p.Item_Nivel1 {
+                     background-color: #e5e5e566 !important;
+              }
+
+              html.dark-mode .dark-mode-color-black,
+              html.dark-mode .dark-mode-color-black * {
+                     color: #000 !important;
+              }
+
+              html.dark-mode .dark-mode-color-white,
+              html.dark-mode .dark-mode-color-white * {
+                     color: #fff !important;
+              }
+
+              p[contenteditable="false"] {
+                     background-color: #f3f3f3;
+                     position: relative;
+              }
+
+              p[contenteditable="false"]::after {
+                     content: "\f023";
+                     font-family: "Font Awesome 5 Pro";
+                     right: 0;
+                     position: absolute;
+                     color: #747474;
+                     opacity: 0.5;
+              }
+
+              a.anchorRefInternaPro {
+                     cursor: pointer;
+              }
+
+              p .legis {
+                     background: #f1f1f1;
+              }
+
+              p .error {
+                     background-color: #ffd2d2;
+              }
+
+              p .alert {
+                     cursor: pointer;
+                     background: #fffbc9;
+                     border-left: 3px solid #ffe52a;
+                     padding-left: 4px;
+              }
+
+              span.tooltips {
+                     position: absolute;
+                     text-align: left;
+                     background: #fffbc9;
+                     text-indent: 0;
+                     border-left: 3px solid #ffe52a;
+                     margin: -46px 0px 0px -7px;
+                     width: 500px;
+                     font-size: 10pt;
+                     padding: 5px;
+                     color: #636363;
+                     height: 36px;
+              }
+
+              span.tooltips .ignoretext {
+                     background: #ecdc89;
+                     padding: 3px 5px;
+                     margin: 3px;
+                     font-size: 8pt;
+                     text-transform: uppercase;
+                     border-radius: 5px;
+                     float: right;
+              }
+
+              span.sigiloSEI {
+                     background-color: #ececec;
+                     border-bottom: 2px solid #d79d23;
+              }
+
+              span.sigiloSEI::before {
+                     content: "\f023";
+                     font-family: "Font Awesome 5 Free";
+                     color: #d79d23;
+                     margin: 0 5px;
+                     font-size: 80%;
+                     font-weight: 600;
+              }
+
+              html.dark-mode .pageBreakPro,
+              html.dark-mode .sessionBreakPro {
+                     background: #6f7071;
+                     height: 15px;
+              }
+
+              .pageBreakPro,
+              .sessionBreakPro {
+                     background: #f1f1f1;
+                     height: 15px;
+              }
+
+              .pageBreakPro::before,
+              .sessionBreakPro::before {
+                     border-bottom: 2px dashed #bfbfbf;
+                     display: block;
+                     content: '';
+                     height: 7px;
+              }
+
+              .pageBreakPro::after,
+              .sessionBreakPro::after {
+                     content: '↳ Quebra de página';
+                     font-family: Calibri;
+                     text-align: center;
+                     display: block;
+                     margin-top: -10px;
+                     color: #585858;
+                     text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+                     font-size: 10pt;
+                     font-style: italic;
+              }
+
+              .sessionBreakPro::after {
+                     content: '↳ Quebra de sessão' !important;
+              }
+
+              .linkDisplayPro {
+                     user-select: none;
+                     position: absolute;
+                     display: inline-block;
+                     padding: 8px;
+                     box-shadow: 0 1px 3px 1px rgba(60, 64, 67, .35);
+                     background: #fff;
+                     border-color: #dadce0;
+                     border-radius: 8px;
+                     margin-top: 16px;
+                     text-align: left;
+                     text-indent: initial;
+                     font-size: 12pt;
+                     text-transform: initial;
+                     font-weight: initial;
+                     letter-spacing: initial;
+                     text-decoration: initial;
+                     white-space: nowrap;
+              }
+
+              .linkDisplayPro a {
+                     padding: 0 8px;
+                     cursor: pointer;
+                     text-decoration: underline;
+                     color: #1155cc;
+              }
+
+              html.dark-mode .linkDisplayPro {
+                     background-color: #3D3D3D !important;
+              }
+
+              html.dark-mode .linkDisplayPro a {
+                     color: #fbfbfe !important;
+              }
+
+              html.dark-mode .cke_copyformatting_active {
+                     cursor: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIiA/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgd2lkdGg9IjEzLjY0MDMyODc0MzE5OTIzNCIgaGVpZ2h0PSIxNi4xMjAwMDAwMDAwMDAwMDUiIHZpZXdCb3g9IjMxNC42Njk2NzEyNTY4MDA3NyAzMTEuOTQgMTMuNjQwMzI4NzQzMTk5MjM0IDE2LjEyMDAwMDAwMDAwMDAwNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxkZXNjPkNyZWF0ZWQgd2l0aCBGYWJyaWMuanMgNC42LjA8L2Rlc2M+CjxkZWZzPgo8L2RlZnM+CjxnIHRyYW5zZm9ybT0ibWF0cml4KDAuMDYgMCAwIDAuMDYgMzI0LjU3IDMyMCkiIGlkPSJ3MGQwNHhBNjhSaG1qYldBZWQyTmgiICA+CjxwYXRoIHN0eWxlPSJzdHJva2U6IG5vbmU7IHN0cm9rZS13aWR0aDogMTsgc3Ryb2tlLWRhc2hhcnJheTogbm9uZTsgc3Ryb2tlLWxpbmVjYXA6IGJ1dHQ7IHN0cm9rZS1kYXNob2Zmc2V0OiAwOyBzdHJva2UtbGluZWpvaW46IG1pdGVyOyBzdHJva2UtbWl0ZXJsaW1pdDogNDsgZmlsbDogcmdiKDI1NSwyNTUsMjU1KTsgZmlsbC1ydWxlOiBldmVub2RkOyBvcGFjaXR5OiAxOyIgdmVjdG9yLWVmZmVjdD0ibm9uLXNjYWxpbmctc3Ryb2tlIiAgdHJhbnNmb3JtPSIgdHJhbnNsYXRlKC0xNTEsIC0xMjYpIiBkPSJNIDE3MCAxNCBMIDIwMC4wMDc1MzcgMTQgQyAyMDIuNzY5MDU3IDE0IDIwNSAxMS43NjM2NDkzIDIwNSA5LjAwNDk3MDkyIEwgMjA1IDQuOTk1MDI5MDggQyAyMDUgMi4yMzM4MjIxMiAyMDIuNzY0Nzk4IDAgMjAwLjAwNzUzNyAwIEwgMTAxLjk5MjQ2MyAwIEMgOTkuMjMwOTQzMSAwIDk3IDIuMjM2MzUwNjkgOTcgNC45OTUwMjkwOCBMIDk3IDkuMDA0OTcwOTIgQyA5NyAxMS43NjYxNzc5IDk5LjIzNTIwMTcgMTQgMTAxLjk5MjQ2MyAxNCBMIDEzMyAxNCBMIDEzMyAyMzggTCAxMDEuOTkyNDYzIDIzOCBDIDk5LjIzMDk0MzEgMjM4IDk3IDI0MC4yMzYzNTEgOTcgMjQyLjk5NTAyOSBMIDk3IDI0Ny4wMDQ5NzEgQyA5NyAyNDkuNzY2MTc4IDk5LjIzNTIwMTcgMjUyIDEwMS45OTI0NjMgMjUyIEwgMjAwLjAwNzUzNyAyNTIgQyAyMDIuNzY5MDU3IDI1MiAyMDUgMjQ5Ljc2MzY0OSAyMDUgMjQ3LjAwNDk3MSBMIDIwNSAyNDIuOTk1MDI5IEMgMjA1IDI0MC4yMzM4MjIgMjAyLjc2NDc5OCAyMzggMjAwLjAwNzUzNyAyMzggTCAxNzAgMjM4IEwgMTcwIDE0IFoiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgLz4KPC9nPgo8ZyB0cmFuc2Zvcm09Im1hdHJpeCgwLjA2IDAgMCAwLjA2IDMxOCAzMTkuNDgpIiBpZD0iNjlfbUZlWUc0MzlsTGM2X3FqUHlhIiAgPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOiBub25lOyBzdHJva2Utd2lkdGg6IDE7IHN0cm9rZS1kYXNoYXJyYXk6IG5vbmU7IHN0cm9rZS1saW5lY2FwOiBidXR0OyBzdHJva2UtZGFzaG9mZnNldDogMDsgc3Ryb2tlLWxpbmVqb2luOiBtaXRlcjsgc3Ryb2tlLW1pdGVybGltaXQ6IDQ7IGZpbGw6IHJnYigyNTUsMjU1LDI1NSk7IGZpbGwtcnVsZTogZXZlbm9kZDsgb3BhY2l0eTogMTsiIHZlY3Rvci1lZmZlY3Q9Im5vbi1zY2FsaW5nLXN0cm9rZSIgIHRyYW5zZm9ybT0iIHRyYW5zbGF0ZSgtNDcuNTcsIC0xMTcuNzgpIiBkPSJNIDY1IDIyMi4yODA4MjkgQyA2MC42MTMxMTc2IDIyMi4yODA4MjkgNTYuMzc0MjE2MiAyMjIuMjgwODI4IDUyLjk5OTk5OTUgMjIyLjI4MDgyOCBMIDUzIDE3MCBMIDQyIDE3MCBMIDQyIDIyMi41NjA1OTMgQyAzOC42MTMwMjQ2IDIyMi41NjA1OTMgMzQuMzc2MzMwOCAyMjIuNTYwNTkzIDMwLjAwMDAwMDUgMjIyLjU2MDU5NCBMIDMwIDE3MCBMIDE5IDE3MCBMIDE5IDIyMi41NjA1OTUgQyAxNi4zMjQ4NjUgMjIyLjU2MDU5NSAxMy44NDYzMzY5IDIyMi41NjA1OTUgMTEuNzYxMjcyNSAyMjIuNTYwNTk2IEMgLTAuMzY5NTg2NDM4IDIyMi41NjA1OTkgMS4yODM4MTc0NiAyMTEuNTA5MzEzIDEuMjgzODE3NDYgMjExLjUwOTMxMyBDIDEuMjgzODE3NDYgMjExLjUwOTMxMyAwLjM4OTY4OTk0NCAxNzcuNzU2IDAuMzk2NTcxMjc3IDE1OCBMIDk0Ljc0MDgyMzIgMTU4IEMgOTQuNzM5MjczNiAxNzcuNzkzMDg5IDkzLjg1MzUzOTYgMjExLjIyOTU0OCA5My44NTM1Mzk2IDIxMS4yMjk1NDggQyA5My44NTM1Mzk2IDIxMS4yMjk1NDggOTUuNTA2OTQzNSAyMjIuMjgwODM0IDgzLjM3NjA4NDUgMjIyLjI4MDgzMSBDIDgxLjI1NTM3ODIgMjIyLjI4MDgzIDc4LjcyNzY0MTUgMjIyLjI4MDgzIDc2LjAwMDAwMDIgMjIyLjI4MDgzIEwgNzYgMTcwIEwgNjUgMTcwIEwgNjUgMjIyLjI4MDgyOSBaIE0gMC41NzQ1MzQwMzYgMTQ3IEMgMC41Nzk3NjgzODcgMTQ2Ljg5NjE0OSAwLjU4NTEzMTYzOCAxNDYuNzk0NzU1IDAuNTkwNjI1NTE0IDE0Ni42OTU4NjYgQyAxLjI4MzgxNzQ4IDEzNC4yMTg0MDkgLTAuNzk3MTEyMjg2IDEyMi40MzQxNDYgMTYuODc5MjgxNiAxMTYuMTk1NDIyIEMgMzQuNTU1Njc1NSAxMDkuOTU2Njk4IDI4LjY2NjI1MzYgMTA3LjUzMDUyMiAzMC4zOTc4NzkyIDk1Ljc0NjI1NzYgQyAzMi4xMjk1MDQ4IDgzLjk2MTk5MyAyNS44OTIxMjk4IDc4LjA2OTg2MyAyNS44OTIxMzE1IDQ0Ljc5NjY0OTYgQyAyNS44OTIxMzMgMTcuOTYwNzIwNiAzOC41MTY5NDY3IDEzLjkyMjAxNzMgNDUuNTIyMDkzOSAxMy4zNjM3NjE3IEMgNDUuNjA4OTgxNCAxMy4xMzQwNzI3IDQ1LjcwMDI1MDYgMTMuMDE2NDM5MSA0NS43OTYwNjMxIDEzLjAxNjQzOTEgQyA0OS44MzcyMDU2IDEzLjAxNjQzODkgNjkuMjQ1MjIzNyAxMS4yNDM2NzEzIDY5LjI0NTIyNTUgNDQuNTE2ODg0NyBDIDY5LjI0NTIyNzMgNzcuNzkwMDk4MiA2My4wMDc4NTIzIDgzLjY4MjIyODEgNjQuNzM5NDc3OCA5NS40NjY0OTI4IEMgNjYuNDcxMTAzNCAxMDcuMjUwNzU3IDYwLjU4MTY4MTUgMTA5LjY3NjkzMyA3OC4yNTgwNzU0IDExNS45MTU2NTcgQyA5NS45MzQ0NjkzIDEyMi4xNTQzODEgOTMuODUzNTM5NSAxMzMuOTM4NjQ0IDk0LjU0NjczMTUgMTQ2LjQxNjEwMSBDIDk0LjU1NzA1ODYgMTQ2LjYwMTk4OSA5NC41NjY5MjQyIDE0Ni43OTY3MjQgOTQuNTc2MzM5NyAxNDcgTCAwLjU3NDUzNDAzNiAxNDcgWiBNIDQ3LjUgNDEgQyA1Mi4xOTQ0MjA0IDQxIDU2IDM3LjE5NDQyMDQgNTYgMzIuNSBDIDU2IDI3LjgwNTU3OTYgNTIuMTk0NDIwNCAyNCA0Ny41IDI0IEMgNDIuODA1NTc5NiAyNCAzOSAyNy44MDU1Nzk2IDM5IDMyLjUgQyAzOSAzNy4xOTQ0MjA0IDQyLjgwNTU3OTYgNDEgNDcuNSA0MSBaIiBzdHJva2UtbGluZWNhcD0icm91bmQiIC8+CjwvZz4KPC9zdmc+") 12 1, auto !important;
+              }
+
+              .cke_copyformatting_active {
+                     cursor: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDIwNSAyNTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+Y3Vyc29yPC90aXRsZT4KICAgIDxkZXNjPjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQYWdlLTQiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZC0xIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNDkuMDAwMDAwLCAtMi4wMDAwMDApIiBmaWxsPSIjMDAwMDAwIj4KICAgICAgICAgICAgPGcgaWQ9ImN1cnNvciIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDkuMDAwMDAwLCAyLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTE3MCwxNCBMMjAwLjAwNzUzNywxNCBDMjAyLjc2OTA1NywxNCAyMDUsMTEuNzYzNjQ5MyAyMDUsOS4wMDQ5NzA5MiBMMjA1LDQuOTk1MDI5MDggQzIwNSwyLjIzMzgyMjEyIDIwMi43NjQ3OTgsMCAyMDAuMDA3NTM3LDAgTDEwMS45OTI0NjMsMCBDOTkuMjMwOTQzMSwwIDk3LDIuMjM2MzUwNjkgOTcsNC45OTUwMjkwOCBMOTcsOS4wMDQ5NzA5MiBDOTcsMTEuNzY2MTc3OSA5OS4yMzUyMDE3LDE0IDEwMS45OTI0NjMsMTQgTDEzMywxNCBMMTMzLDIzOCBMMTAxLjk5MjQ2MywyMzggQzk5LjIzMDk0MzEsMjM4IDk3LDI0MC4yMzYzNTEgOTcsMjQyLjk5NTAyOSBMOTcsMjQ3LjAwNDk3MSBDOTcsMjQ5Ljc2NjE3OCA5OS4yMzUyMDE3LDI1MiAxMDEuOTkyNDYzLDI1MiBMMjAwLjAwNzUzNywyNTIgQzIwMi43NjkwNTcsMjUyIDIwNSwyNDkuNzYzNjQ5IDIwNSwyNDcuMDA0OTcxIEwyMDUsMjQyLjk5NTAyOSBDMjA1LDI0MC4yMzM4MjIgMjAyLjc2NDc5OCwyMzggMjAwLjAwNzUzNywyMzggTDE3MCwyMzggTDE3MCwxNCBaIiBpZD0iQ29tYmluZWQtU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik02NSwyMjIuMjgwODI5IEM2MC42MTMxMTc2LDIyMi4yODA4MjkgNTYuMzc0MjE2MiwyMjIuMjgwODI4IDUyLjk5OTk5OTUsMjIyLjI4MDgyOCBMNTMsMTcwIEw0MiwxNzAgTDQyLDIyMi41NjA1OTMgQzM4LjYxMzAyNDYsMjIyLjU2MDU5MyAzNC4zNzYzMzA4LDIyMi41NjA1OTMgMzAuMDAwMDAwNSwyMjIuNTYwNTk0IEwzMCwxNzAgTDE5LDE3MCBMMTksMjIyLjU2MDU5NSBDMTYuMzI0ODY1LDIyMi41NjA1OTUgMTMuODQ2MzM2OSwyMjIuNTYwNTk1IDExLjc2MTI3MjUsMjIyLjU2MDU5NiBDLTAuMzY5NTg2NDM4LDIyMi41NjA1OTkgMS4yODM4MTc0NiwyMTEuNTA5MzEzIDEuMjgzODE3NDYsMjExLjUwOTMxMyBDMS4yODM4MTc0NiwyMTEuNTA5MzEzIDAuMzg5Njg5OTQ0LDE3Ny43NTYgMC4zOTY1NzEyNzcsMTU4IEw5NC43NDA4MjMyLDE1OCBDOTQuNzM5MjczNiwxNzcuNzkzMDg5IDkzLjg1MzUzOTYsMjExLjIyOTU0OCA5My44NTM1Mzk2LDIxMS4yMjk1NDggQzkzLjg1MzUzOTYsMjExLjIyOTU0OCA5NS41MDY5NDM1LDIyMi4yODA4MzQgODMuMzc2MDg0NSwyMjIuMjgwODMxIEM4MS4yNTUzNzgyLDIyMi4yODA4MyA3OC43Mjc2NDE1LDIyMi4yODA4MyA3Ni4wMDAwMDAyLDIyMi4yODA4MyBMNzYsMTcwIEw2NSwxNzAgTDY1LDIyMi4yODA4MjkgWiBNMC41NzQ1MzQwMzYsMTQ3IEMwLjU3OTc2ODM4NywxNDYuODk2MTQ5IDAuNTg1MTMxNjM4LDE0Ni43OTQ3NTUgMC41OTA2MjU1MTQsMTQ2LjY5NTg2NiBDMS4yODM4MTc0OCwxMzQuMjE4NDA5IC0wLjc5NzExMjI4NiwxMjIuNDM0MTQ2IDE2Ljg3OTI4MTYsMTE2LjE5NTQyMiBDMzQuNTU1Njc1NSwxMDkuOTU2Njk4IDI4LjY2NjI1MzYsMTA3LjUzMDUyMiAzMC4zOTc4NzkyLDk1Ljc0NjI1NzYgQzMyLjEyOTUwNDgsODMuOTYxOTkzIDI1Ljg5MjEyOTgsNzguMDY5ODYzIDI1Ljg5MjEzMTUsNDQuNzk2NjQ5NiBDMjUuODkyMTMzLDE3Ljk2MDcyMDYgMzguNTE2OTQ2NywxMy45MjIwMTczIDQ1LjUyMjA5MzksMTMuMzYzNzYxNyBDNDUuNjA4OTgxNCwxMy4xMzQwNzI3IDQ1LjcwMDI1MDYsMTMuMDE2NDM5MSA0NS43OTYwNjMxLDEzLjAxNjQzOTEgQzQ5LjgzNzIwNTYsMTMuMDE2NDM4OSA2OS4yNDUyMjM3LDExLjI0MzY3MTMgNjkuMjQ1MjI1NSw0NC41MTY4ODQ3IEM2OS4yNDUyMjczLDc3Ljc5MDA5ODIgNjMuMDA3ODUyMyw4My42ODIyMjgxIDY0LjczOTQ3NzgsOTUuNDY2NDkyOCBDNjYuNDcxMTAzNCwxMDcuMjUwNzU3IDYwLjU4MTY4MTUsMTA5LjY3NjkzMyA3OC4yNTgwNzU0LDExNS45MTU2NTcgQzk1LjkzNDQ2OTMsMTIyLjE1NDM4MSA5My44NTM1Mzk1LDEzMy45Mzg2NDQgOTQuNTQ2NzMxNSwxNDYuNDE2MTAxIEM5NC41NTcwNTg2LDE0Ni42MDE5ODkgOTQuNTY2OTI0MiwxNDYuNzk2NzI0IDk0LjU3NjMzOTcsMTQ3IEwwLjU3NDUzNDAzNiwxNDcgWiBNNDcuNSw0MSBDNTIuMTk0NDIwNCw0MSA1NiwzNy4xOTQ0MjA0IDU2LDMyLjUgQzU2LDI3LjgwNTU3OTYgNTIuMTk0NDIwNCwyNCA0Ny41LDI0IEM0Mi44MDU1Nzk2LDI0IDM5LDI3LjgwNTU3OTYgMzksMzIuNSBDMzksMzcuMTk0NDIwNCA0Mi44MDU1Nzk2LDQxIDQ3LjUsNDEgWiIgaWQ9IkNvbWJpbmVkLVNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=") 12 1, auto !important;
+              }
+       </style>
+</head>
+
+<body contenteditable="true" class="cke_editable cke_editable_themed cke_contents_ltr cke_show_borders"
+       spellcheck="true" style="width: auto; transform-origin: left top; transform: scale(1);"
+       data-editor="txaEditor_431">
+       <p class="Item_Nivel1" >ASSUNTO</p>
+       <p class="Item_Nivel2" style="margin-left: 40px;">Contagem de tempo de serviço especial ( Perfil Profissiográfico
+              Previdenciário – PPP)</p>
+       <p class="Item_Nivel1">REFERÊNCIAS</p>
+       <p class="Item_Nivel2" style="margin-left: 40px;">Processo SEI <strong>XXXXXXXXXXXXXXXX</strong></p>
+       <p class="Item_Nivel1">SUMÁRIO EXECUTIVO</p>
+       <p class="Item_Nivel2" style="margin-left: 40px;">O presente expediente visa analisar os assentamentos
+              funcionais, notadamente o histórico de lotação,&nbsp; exercício e atos de concessão de adicionais
+              ocupacionais,&nbsp;&nbsp;do(a) servidor(a)&nbsp;<strong>XXXXXXXXXXXXXXX</strong>,&nbsp;para preenchimento
+              e eventual emissão de&nbsp;Perfil Profissiográfico Previdenciário visando a contagem de tempo de serviço
+              especial.</p>
+       <p class="Item_Nivel1">ANÁLISE</p>
+       <p class="Item_Nivel2" style="margin-left: 40px;">Trata-se do requerimento formulado por
+              <strong>XXXXXXXXXXXXXXX</strong>, para contagem de tempo especial. Assim, foram analisadas&nbsp;as
+              informações constantes nos sistemas SIAPE,&nbsp; SIPES,&nbsp; SIGRH e assentamentos funcionais&nbsp;
+       </p>
+       <p class="Item_Nivel2" style="margin-left: 40px;">O(A) servidor(a)&nbsp; <strong>XXXXXXXXXXXXXXX</strong>,
+              matrícula SIAPE&nbsp;<strong>XXXXXXXXXXX</strong>,&nbsp;ocupante do do cargo de
+              <strong>XXXXXXXXXXXXXXXXX</strong>, ingressou ao quadro efetivo de pessoal da Universidade de Brasília
+              (UnB) em <strong>XX/XX/XXXX.</strong>
+       </p>
+       <p class="Item_Nivel2" style="margin-left: 40px;">Conforme dados funcionais (<strong>XXXXXXXX</strong>),
+              o&nbsp;requerente, durante o período de efetivo exercício,&nbsp;tem o seguinte histórico de
+              lotação/exercício:</p>
+       <ul>
+              <li class="Item_Nivel2" style="margin-left: 40px;">De <strong>XX/XX/XXXX</strong>&nbsp;até os dias
+                     atuais&nbsp;- <strong>XXXXXXXXXXXXXXXXX</strong></li>
+       </ul>
+       <p class="Item_Nivel2" style="margin-left: 40px;">Em relação aos Atos de concessão de adicional ocupacional
+              (<strong>XXXXXXXX</strong>):</p>
+       <ul>
+              <li class="Item_Nivel2" style="margin-left: 40px;">UORG <strong>XXXX</strong> / Data de Início da
+                     Concessão: <strong>XX/XX/XXXX</strong> /&nbsp;Data de Fim&nbsp;da
+                     Concessão:&nbsp;<strong>XX/XX/XXXX</strong></li>
+       </ul>
+       <p class="Item_Nivel2" style="margin-left: 40px;">&nbsp;Licenças/Afastamentos:</p>
+       <ul>
+              <li class="Tabela_Texto_Alinhado_Esquerda" style="margin-left: 40px;">Relatório de afastamentos
+                     <strong>XXXXXXXXXXX</strong>.
+              </li>
+       </ul>
+       <p class="Tabela_Texto_Alinhado_Esquerda" style="margin-left: 40px;">4.6.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp; &nbsp; Ficha Financeira</p>
+       <ul>
+              <li class="Tabela_Texto_Alinhado_Esquerda" style="margin-left: 40px;">
+                     Documento&nbsp;(<strong>XXXXXXXX</strong>), em que consta o recebimento de Adicional de
+                     <strong>XXXXXXXXXXXXX</strong> nos seguintes períodos:<ul>
+                            <li class="Tabela_Texto_Alinhado_Esquerda" style="margin-left: 40px;">De<strong> XX/XXX a
+                                          XX/XXXX</strong></li>
+                     </ul>
+              </li>
+       </ul>
+       <p class="Item_Nivel1">DOCUMENTOS RELACIONADOS</p>
+       <p class="Item_Nivel2" style="margin-left: 40px;">Dados Funcionais (<strong>XXXXXXXX, XXXXX e XXXXX</strong>),
+              Relatório de Afastamentos/Licenças&nbsp;(<strong>XXXXXXXX</strong>), Ficha
+              Financeira&nbsp;(<strong>XXXXXXXX</strong>)&nbsp;e Atos de Concessão&nbsp;(<strong>XXXXXXXX</strong>).</p>
+       <p class="Item_Nivel1">CONCLUSÃO</p>
+       <p class="Item_Nivel2" style="margin-left: 40px;">Conforme análise realizada utilizando os sistemas de pessoal
+              utilizados pela Universidade de Brasília; SIPES, SIGRH e SIAPE;&nbsp; bem como os assentamentos funcionais
+              localizados e encaminhados pela Coordenadoria de Arquivo Funcional (COARQ),&nbsp; encaminha-se o presente
+              processo à DSQVT/CEST para análise quanto às informações encontradas e informadas na presente nota técnica
+              visando a emissão do&nbsp;Perfil Profissiográfico Previdenciário – PPP.</p>
+       <p class="Item_Nivel2" style="margin-left: 40px;">Caso as informações presentes nesta Nota Técnica não sejam
+              suficientes para emissão do PPP, <strong>solicitamos que seja encaminhado o processo para ciência
+                     do&nbsp;<u>servidor interessado </u>com decisão quanto ao deferimento/indeferimento da emissão,
+                     visto que foram prestadas por esta Coordenadoria todas as informações disponíveis.</strong></p>
+</body>
+
+</html>
