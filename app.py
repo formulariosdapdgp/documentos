@@ -9,4 +9,5 @@ with st.sidebar:
     st.title("MENU DE OPÇÕES")
     documento_escolhido = st.selectbox("Escolha o tipo de documento: ", tipo_de_documento)
 
+# Chamando menu de opções
 menu_opcoes_docs(documento_escolhido)    
