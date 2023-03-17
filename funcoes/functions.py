@@ -19,7 +19,8 @@ def menu_opcoes_docs(doc_selecionado):
        if tipo_de_ato_dgp == atos_dgp[1] or tipo_de_ato_dgp == atos_dgp[2] or tipo_de_ato_dgp == atos_dgp[3]:
           fcc_escolhida = st.sidebar.selectbox("Informe a FCC", lista_fcc)
           if fcc_escolhida == lista_fcc[1] and tipo_de_ato_dgp == atos_dgp[1]:
-             designacao_fcc.form_designacao_fcc()
+             dados_recebidos_fcc = designacao_fcc.form_designacao_fcc()
+             designacao_fcc.gerar_form_designa_fcc(dados_recebidos_fcc)
        elif tipo_de_ato_dgp == atos_dgp[4]:
           opcao_fg = st.sidebar.selectbox("Informe a FG", lista_fgs)
             
