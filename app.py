@@ -2,7 +2,7 @@ import streamlit as st
 from funcoes.variaveis import *
 from funcoes.functions import *
 
-st.subheader("Documentos para o SEI")
+st.subheader("Criador de documentos da COREF")
 
 # barra lateral
 with st.sidebar:
