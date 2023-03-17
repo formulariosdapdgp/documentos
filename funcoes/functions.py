@@ -3,6 +3,24 @@ from funcoes.variaveis import *
 from paginas.atos_do_dgp.fccs import designacao_fcc
 
 
+#Baixar Arquivo
+def baixar_formulario(form_gerado):
+    pos_btn_1, pos_btn_2, pos_btn_3 = st.columns([3,3,1])
+    with pos_btn_1:
+        pass
+    with pos_btn_2:
+       try:
+            with open(str(form_gerado[0]), "rb") as file:
+                st.download_button(
+                    label="BAIXAR ATO",
+                    data=file,
+                    file_name=form_gerado[0],
+                    mime="text/html")
+       except:
+            st.error("ARQUIVO NÃO LOCALIZADO! REPITA O PROCESSO.")
+    with pos_btn_3:
+        pass
+    
 def menu_opcoes_docs(doc_selecionado):
     
     # ATOS DA REITORIA
@@ -21,6 +39,7 @@ def menu_opcoes_docs(doc_selecionado):
           # Designação para FCC
           if fcc_escolhida == lista_fcc[1] and tipo_de_ato_dgp == atos_dgp[1]:
              designacao_fcc.form_designacao_fcc()
+             st.sidebar.write(modelo_ato_em_brando)
        elif tipo_de_ato_dgp == atos_dgp[4]:
           opcao_fg = st.sidebar.selectbox("Informe a FG", lista_fgs)
             
