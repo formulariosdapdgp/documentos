@@ -30,6 +30,7 @@ def form_designacao_fcc():
             pass
     if btn_gravar:
         ato_gerado = gerar_ato_designa_fcc(dados_fcc)
+        st.success("Ato gerado com sucesso! Clique em 'BAIXAR DOCUMENTO'")
         funcoes.functions.baixar_formulario(ato_gerado)
         
 

@@ -12,7 +12,7 @@ def baixar_formulario(form_gerado):
        try:
             with open(str(form_gerado[0]), "rb") as file:
                 st.download_button(
-                    label="BAIXAR ATO",
+                    label="BAIXAR DOCUMENTO",
                     data=file,
                     file_name=form_gerado[0],
                     mime="text/html")
