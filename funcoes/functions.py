@@ -1,7 +1,8 @@
 import streamlit as st
 from funcoes.variaveis import *
 import paginas.pagina_inicial 
-import paginas.atos_do_dgp.fccs.designacao_fcc, paginas.atos_do_dgp.fccs.dispensa_fcc, paginas.atos_do_dgp.fccs.substituicao_fcc, paginas.atos_do_dgp.fccs.A_formularios_fcc
+import paginas.atos_do_dgp.fccs.designacao_fcc, paginas.atos_do_dgp.fccs.dispensa_fcc, paginas.atos_do_dgp.fccs.substituicao_fcc, paginas.atos_do_dgp.fccs.A_formularios_fcc, paginas.atos_do_dgp.fccs.ato_generio_fcc
+import os
 
    
 def menu_opcoes_docs(doc_selecionado):
@@ -30,17 +31,20 @@ def menu_opcoes_docs(doc_selecionado):
 
           # Designação para FCC
           if fcc_escolhida == lista_fcc[1] and tipo_de_ato_dgp == atos_dgp[1]:
-             paginas.atos_do_dgp.fccs.A_formularios_fcc.formularios_fcc(paginas.atos_do_dgp.fccs.designacao_fcc.gerar_ato_designa_fcc, False, "Designação de FCC")
+             paginas.atos_do_dgp.fccs.A_formularios_fcc.formularios_fcc(paginas.atos_do_dgp.fccs.ato_generio_fcc.gerar_ato_fcc, False, "Designação de FCC")
+             #paginas.atos_do_dgp.fccs.A_formularios_fcc.formularios_fcc(paginas.atos_do_dgp.fccs.designacao_fcc.gerar_ato_designa_fcc, False, "Designação de FCC")
              st.sidebar.write(modelo_ato_em_branco)
           
           # Dispensa para FCC
           if fcc_escolhida == lista_fcc[1] and tipo_de_ato_dgp == atos_dgp[2]:
-             paginas.atos_do_dgp.fccs.A_formularios_fcc.formularios_fcc(paginas.atos_do_dgp.fccs.dispensa_fcc.gerar_ato_dispensa_fcc, False, "Dispensa de FCC")
+             paginas.atos_do_dgp.fccs.A_formularios_fcc.formularios_fcc(paginas.atos_do_dgp.fccs.ato_generio_fcc.gerar_ato_fcc, False, "Dispensa de FCC")
+             #paginas.atos_do_dgp.fccs.A_formularios_fcc.formularios_fcc(paginas.atos_do_dgp.fccs.dispensa_fcc.gerar_ato_dispensa_fcc, False, "Dispensa de FCC")
              st.sidebar.write(modelo_ato_em_branco)
           
           # Substituição para FCC
           if fcc_escolhida == lista_fcc[1] and tipo_de_ato_dgp == atos_dgp[3]:
-             paginas.atos_do_dgp.fccs.A_formularios_fcc.formularios_fcc(paginas.atos_do_dgp.fccs.substituicao_fcc.gerar_ato_substituicao_fcc, True, "Substituição de FCC")
+             paginas.atos_do_dgp.fccs.A_formularios_fcc.formularios_fcc(paginas.atos_do_dgp.fccs.ato_generio_fcc.gerar_ato_fcc, True, "Substituição de FCC")
+             #paginas.atos_do_dgp.fccs.A_formularios_fcc.formularios_fcc(paginas.atos_do_dgp.fccs.substituicao_fcc.gerar_ato_substituicao_fcc, True, "Substituição de FCC")
              st.sidebar.write(modelo_ato_em_branco)
 
 
@@ -75,6 +79,7 @@ def baixar_formulario(form_gerado):
             st.error("ARQUIVO NÃO LOCALIZADO! REPITA O PROCESSO.")
     with pos_btn_3:
         pass
+    os.remove(form_gerado[0])
     
 
 # função para deixar data recebida no formato necessário
