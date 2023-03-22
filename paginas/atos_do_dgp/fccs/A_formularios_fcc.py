@@ -16,15 +16,25 @@ def formularios_fcc(doc_a_ser_gerado, eh_substituicao, nome_do_ato):
             dados_fcc['numero_ato'] = st.text_input("Informe o número do ato:", max_chars=4)
         with col_ano_ato:
             dados_fcc['ano_ato']= st.text_input("Informe o ano do ato:", value=str(ano_atual), max_chars=4)
-        dados_fcc['nome_designado'] = st.text_input("Nome do Designado: ")
-        col_substituicao_1, col_substituicao_2 = st.columns(2)
+        
         if eh_substituicao:
-         with col_substituicao_1:
-               dados_fcc['nome_titular_substituido'] = st.text_input("Nome do Titular a ser substituído: ")
-               dados_fcc['inicio_substituicao'] = st.date_input("Início da Substituição: ")
-         with col_substituicao_2:
-               dados_fcc['motivo_substituicao'] = st.text_input("Durante o período de: ")
-               dados_fcc['fim_substituicao'] = st.date_input("Término da Substituição: ")
+            with st.expander("Dados do Coordenador(a) a ser substituído", expanded=True):
+                col_substituicao_1, col_substituicao_2 = st.columns(2)
+                with col_substituicao_1:
+                    dados_fcc['nome_titular_substituido'] = st.text_input("Nome do Titular a ser substituído: ")
+                    dados_fcc['inicio_substituicao'] = st.date_input("Início da Substituição: ")
+                    dados_fcc['genero_titular_substituido'] = st.radio("Genero do titular substituído:",("Masculino", "Feminino"), key="genero")
+                with col_substituicao_2:
+                    dados_fcc['motivo_substituicao'] = st.text_input("Durante o período de: ")
+                    dados_fcc['fim_substituicao'] = st.date_input("Término da Substituição: ")
+
+        if nome_do_ato == "Dispensa de FCC":
+            dados_fcc['nome_designado'] = st.text_input("Nome do Dispensado da função: ")
+        elif nome_do_ato == "Substituição de FCC":
+            dados_fcc['nome_designado'] = st.text_input("Nome do Substituto(a): ")
+        else:
+            dados_fcc['nome_designado'] = st.text_input("Nome do Designado para a função: ")
+        
         col_genero, col_coord = st.columns(2)
         with col_genero:
             dados_fcc['genero_coordenador'] = st.radio("Genero:",("Masculino", "Feminino"))
@@ -41,6 +51,7 @@ def formularios_fcc(doc_a_ser_gerado, eh_substituicao, nome_do_ato):
         with pos_btn_3:
             pass
     if btn_gravar:
-        ato_gerado = doc_a_ser_gerado(dados_fcc)
+        ato_gerado = doc_a_ser_gerado(dados_fcc, nome_do_ato)
+        st.write(dados_fcc)
         st.success("Ato gerado com sucesso! Clique em 'BAIXAR DOCUMENTO'")
         funcoes.functions.baixar_formulario(ato_gerado)
