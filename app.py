@@ -3,8 +3,7 @@ from funcoes.variaveis import *
 import funcoes.functions
 import paginas.pagina_inicial
 
-#Pagina inicial
-paginas.pagina_inicial.home()
+
 
 # barra lateral
 with st.sidebar:

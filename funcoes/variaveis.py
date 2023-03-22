@@ -16,7 +16,7 @@ decana_titular = "Maria do Socorro Mendes Gomes<br>Decana de Gestão de Pessoas"
 
 decana_em_exercicio = "Sheila Perla Maria de Andrade da Silva<br>Decana de Gestão de Pessoas em exercício"
 
-modelo_ato_em_brando = {"Número SEI do modelo de ato": 9449709}
+modelo_ato_em_branco = {"Número SEI do modelo de ato": 9449709}
 
 # capturando ano
 data_atual = datetime.date.today()
