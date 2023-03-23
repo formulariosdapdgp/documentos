@@ -1,7 +1,8 @@
 import streamlit as st
 from funcoes.variaveis import *
 import paginas.pagina_inicial 
-import paginas.atos_do_dgp.fccs.designacao_fcc, paginas.atos_do_dgp.fccs.dispensa_fcc, paginas.atos_do_dgp.fccs.substituicao_fcc, paginas.atos_do_dgp.fccs.A_formularios_fcc, paginas.atos_do_dgp.fccs.ato_generio_fcc
+#import paginas.atos_do_dgp.fccs.designacao_fcc, paginas.atos_do_dgp.fccs.dispensa_fcc, paginas.atos_do_dgp.fccs.substituicao_fcc,  
+import paginas.atos_do_dgp.fccs.A_formularios_fcc, paginas.atos_do_dgp.fccs.ato_generio_fcc
 import os
 
    
