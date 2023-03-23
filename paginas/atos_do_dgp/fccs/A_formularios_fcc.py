@@ -25,7 +25,7 @@ def formularios_fcc(doc_a_ser_gerado, eh_substituicao, nome_do_ato):
                     dados_fcc['inicio_substituicao'] = st.date_input("Início da Substituição: ")
                     dados_fcc['genero_titular_substituido'] = st.radio("Genero do titular substituído:",("Masculino", "Feminino"), key="genero")
                 with col_substituicao_2:
-                    dados_fcc['motivo_substituicao'] = st.text_input("Durante o período de: ")
+                    dados_fcc['motivo_substituicao'] = st.text_input("Durante o período de: ", placeholder="Ex.: Férias, Licença Capacitação, etc")
                     dados_fcc['fim_substituicao'] = st.date_input("Término da Substituição: ")
 
         if nome_do_ato == "Dispensa de FCC":
@@ -52,6 +52,6 @@ def formularios_fcc(doc_a_ser_gerado, eh_substituicao, nome_do_ato):
             pass
     if btn_gravar:
         ato_gerado = doc_a_ser_gerado(dados_fcc, nome_do_ato)
-        st.write(dados_fcc)
+        #st.write(dados_fcc) #debug
         st.success("Ato gerado com sucesso! Clique em 'BAIXAR DOCUMENTO'")
         funcoes.functions.baixar_formulario(ato_gerado)
