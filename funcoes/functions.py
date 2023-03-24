@@ -2,8 +2,9 @@ import streamlit as st
 from funcoes.variaveis import *
 import paginas.pagina_inicial 
 #import paginas.atos_do_dgp.fccs.designacao_fcc, paginas.atos_do_dgp.fccs.dispensa_fcc, paginas.atos_do_dgp.fccs.substituicao_fcc,  
-import paginas.atos_do_dgp.fccs.A_formularios_fcc, paginas.atos_do_dgp.fccs.ato_generio_fcc
+import paginas.atos_do_dgp.fccs.A_formularios_fcc, paginas.atos_do_dgp.fccs.ato_generio_fcc, paginas.nota_tecnica.ppp.nt_ppp
 import os
+import pandas as pd
 
    
 def menu_opcoes_docs(doc_selecionado):
@@ -54,6 +55,10 @@ def menu_opcoes_docs(doc_selecionado):
           if opcao_fg != "":
               pagina_inicial = False
        
+    # NOTA TÉCNICA
+    if doc_selecionado == tipo_de_documento[3]:
+        pagina_inicial = False
+        paginas.nota_tecnica.ppp.nt_ppp.gerar_nt_ppp()
        
     # Pagina inicial
     if pagina_inicial:
@@ -92,3 +97,10 @@ def data_convertida_br(dt): # recebe uma String
     return ""
   else:
     return f'{dia}/{mes}/{ano}' # retorna uma String
+
+
+# Criando tabela de visualização
+def tabela_visualizacao_dados(infos, lista_colunas, lista_indices):
+   with st.expander("Detalhamento", expanded=True):
+        df_txt = pd.DataFrame(infos, columns=lista_colunas, index=lista_indices)
+        st.table(data=df_txt)

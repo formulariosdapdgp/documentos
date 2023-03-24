@@ -1,6 +1,6 @@
 import datetime
 
-tipo_de_documento = ["", "ATOS DA REITORIA", "ATOS DO DGP"]
+tipo_de_documento = ["", "ATOS DA REITORIA", "ATOS DO DGP", "NOTA TÉCNICA"]
 
 atos_reitoria = ["", "Nomeação de CD", "Exoneração de CD", "Substitução de CD", "Recondução de CD", "Designação de FG", "Dispensa de FG"]
 
@@ -11,6 +11,8 @@ lista_fgs = ["", "FG-01", "FG-02", "FG-03"]
 lista_cds = ["", "CD-01", "CD-02", "CD-03", "CD-04"]
 
 lista_fcc = ["", "FCC", "Função não remunerada"]
+
+lista_nota_tecnica = ["", "PPP"]
 
 decana_titular = "Maria do Socorro Mendes Gomes<br>Decana de Gestão de Pessoas"
 
