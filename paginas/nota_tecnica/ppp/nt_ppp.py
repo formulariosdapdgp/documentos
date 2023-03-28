@@ -8,7 +8,7 @@ uorg = []
 dt_ini = []
 dt_fim = []
 
-@st.cache_data
+#@st.cache_data
 def gerar_nt_ppp():
     dados_gerais, lotacao_exercicio, concessao_adcional, licencas_afastamentos, ficha_financeira = st.tabs(("Informações Gerais",
                                                                                                             "Lotação/Exercício",
