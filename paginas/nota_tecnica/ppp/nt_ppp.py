@@ -8,7 +8,7 @@ uorg = []
 dt_ini = []
 dt_fim = []
 
-
+@st.cache_data
 def gerar_nt_ppp():
     dados_gerais, lotacao_exercicio, concessao_adcional, licencas_afastamentos, ficha_financeira = st.tabs(("Informações Gerais",
                                                                                                             "Lotação/Exercício",
@@ -70,10 +70,12 @@ def gerar_nt_ppp():
             dt_fim.append(dados_nt_ppp["data_final_concessao_adicional"])
             df = pd.DataFrame(data={"UORG": uorg, "DATA INICIAL": dt_ini, "DATA FINAL": dt_fim})
             st.table(df)
+            st.cache_data.clear()
     
     with licencas_afastamentos:
         st.write("Licenças - Afastamentos")
     
     with ficha_financeira:
         st.write("Ficha Financeira")
+     
         
