@@ -51,8 +51,8 @@ def gerar_ato_fcc(dados_ato, tipo_ato):
                 <p class="Texto_Justificado_Recuo_Primeira_Linha">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
 
                 <p class="Texto_Justificado_Recuo_Primeira_Linha" style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">Designar, para mandato de 2 (dois) anos, {"o Professor do Magistério Superior" if dados_ato['genero_coordenador'] == "Masculino" else "a Professora do Magistério Superior"} {nome}
-                para exercer a fun&ccedil;&atilde;o de&nbsp;{"Coordenador" if dados_ato['genero_coordenador'] == "Masculino" else "Coordenadora"} do
-                {dados_ato['nome_coordenacao']} em {dados_ato['descricao_funcao'].title().replace(" Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )} (FCC).</p>
+                para exercer a fun&ccedil;&atilde;o de&nbsp;{"Coordenador" if dados_ato['genero_coordenador'] == "Masculino" else "Coordenadora"} 
+                {dados_ato['nome_coordenacao']} de {dados_ato['descricao_funcao'].title().replace(" Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )} (FCC).</p>
 
                 <p class="Texto_Justificado_Recuo_Primeira_Linha">&nbsp;</p>
 
@@ -68,7 +68,7 @@ def gerar_ato_fcc(dados_ato, tipo_ato):
             ato.write(f'''
                             <p class="Texto_Justificado" style="font-size:12pt;font-family:Calibri;text-align:justify;word-wrap:normal;text-indent:0;margin:6pt;">
                             Dispensa {"o Professor do Magistério Superior" if dados_ato['genero_coordenador'] == "Masculino" else "a Professora do Magistério Superior"} {nome} 
-                            da função de {"Coordenador" if dados_ato['genero_coordenador'] == "Masculino" else "Coordenadora"} do {dados_ato['nome_coordenacao']} em 
+                            da função de {"Coordenador" if dados_ato['genero_coordenador'] == "Masculino" else "Coordenadora"} {dados_ato['nome_coordenacao']} de 
                             {dados_ato['descricao_funcao'].title().replace(" Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )} (FCC).</p>
                             </td>
                         </tr>
@@ -84,8 +84,8 @@ def gerar_ato_fcc(dados_ato, tipo_ato):
                 <p class="Texto_Justificado_Recuo_Primeira_Linha">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
 
                 <p class="Texto_Justificado_Recuo_Primeira_Linha" style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">Dispensar, por término de mandato, {"o Professor do Magistério Superior" if dados_ato['genero_coordenador'] == "Masculino" else "a Professora do Magistério Superior"} {nome}
-                da fun&ccedil;&atilde;o de&nbsp;{"Coordenador" if dados_ato['genero_coordenador'] == "Masculino" else "Coordenadora"} do
-                {dados_ato['nome_coordenacao']} em {dados_ato['descricao_funcao'].title().replace(" Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )} (FCC).</p>
+                da fun&ccedil;&atilde;o de&nbsp;{"Coordenador" if dados_ato['genero_coordenador'] == "Masculino" else "Coordenadora"} 
+                {dados_ato['nome_coordenacao']} de {dados_ato['descricao_funcao'].title().replace(" Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )} (FCC).</p>
 
                 <p class="Texto_Justificado_Recuo_Primeira_Linha">&nbsp;</p>
 
@@ -101,7 +101,7 @@ def gerar_ato_fcc(dados_ato, tipo_ato):
             ato.write(f'''
                             <p class="Texto_Justificado" style="font-size:12pt;font-family:Calibri;text-align:justify;word-wrap:normal;text-indent:0;margin:6pt;">
                             Designa {"o Professor do Magistério Superior" if dados_ato['genero_coordenador'] == "Masculino" else "a Professora do Magistério Superior"} {nome} 
-                            para substituir {"o Coordenador" if dados_ato['genero_titular_substituido'] == "Masculino" else " a Coordenadora"} do {dados_ato['nome_coordenacao']} em 
+                            para substituir {"o Coordenador" if dados_ato['genero_titular_substituido'] == "Masculino" else " a Coordenadora"} {dados_ato['nome_coordenacao']} de 
                             {dados_ato['descricao_funcao'].title().replace(" Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )} (FCC).</p>
                             </td>
                         </tr>
@@ -117,7 +117,7 @@ def gerar_ato_fcc(dados_ato, tipo_ato):
                 <p class="Texto_Justificado_Recuo_Primeira_Linha">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
 
                 <p class="Texto_Justificado_Recuo_Primeira_Linha" style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">Designar {"o Professor do Magistério Superior" if dados_ato['genero_coordenador'] == "Masculino" else "a Professora do Magistério Superior"} {nome}
-                para substituir {"o Coordenador" if dados_ato['genero_titular_substituido'] == "Masculino" else " a Coordenadora"} do
+                para substituir {"o Coordenador" if dados_ato['genero_titular_substituido'] == "Masculino" else " a Coordenadora"} 
                 {dados_ato['nome_coordenacao'].title().replace(" Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )} 
                 em {dados_ato['descricao_funcao'].title().replace(" Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )} 
                 (FCC), durante o período de {dados_ato['motivo_substituicao'].title().replace(" Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )}, 
