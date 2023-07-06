@@ -35,7 +35,7 @@ def gerar_ato_fcc(dados_ato, tipo_ato):
             ato.write(f'''
                             <p class="Texto_Justificado" style="font-size:12pt;font-family:Calibri;text-align:justify;word-wrap:normal;text-indent:0;margin:6pt;">
                             Designa {"o Professor do Magistério Superior" if dados_ato['genero_coordenador'] == "Masculino" else "a Professora do Magistério Superior"} {nome} 
-                            para exercer a função de {"Coordenador" if dados_ato['genero_coordenador'] == "Masculino" else "Coordenadora"} do {dados_ato['nome_coordenacao']} em 
+                            para exercer a função de {"Coordenador" if dados_ato['genero_coordenador'] == "Masculino" else "Coordenadora"} {dados_ato['nome_coordenacao']} de 
                             {dados_ato['descricao_funcao'].title().replace(" Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )} (FCC).</p>
                             </td>
                         </tr>
