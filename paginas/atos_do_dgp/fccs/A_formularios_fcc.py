@@ -39,7 +39,7 @@ def formularios_fcc(doc_a_ser_gerado, eh_substituicao, nome_do_ato):
         with col_genero:
             dados_fcc['genero_coordenador'] = st.radio("Genero:",("Masculino", "Feminino"))
         with col_coord:
-            dados_fcc['nome_coordenacao'] = st.radio("Tipo de Coordenação:",("Curso de Pós-graduação", "Curso de Graduação"))
+            dados_fcc['nome_coordenacao'] = st.radio("Tipo de Coordenação:",("de Pós-graduação do Curso", "de Graduação do Curso"))# Curso 
         dados_fcc['descricao_funcao'] = st.text_input("Curso de graduação ou pós-graduação em: ")
         dados_fcc['numero_sei'] = st.text_input("Número do processo SEI:")
         dados_fcc['decana'] = st.radio("Assinatura:",("Decana titular", "Decana em exercício"))
